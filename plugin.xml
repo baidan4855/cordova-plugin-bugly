@@ -13,16 +13,12 @@
   <preference name="BUGLY_APPID" />
   <preference name="BUGLY_ENABLE_DEBUG" default="false" />
 
+  <hook type="after_plugin_install" src="src/hooks/after_plugin_install.js" />
+  <hook type="before_plugin_uninstall" src="src/hooks/before_plugin_uninstall.js" />
   <!-- android -->
   <platform name="android">
     <lib-file src="src/android/libs/bugly_crash_release.jar" />
     <source-file src="src/android/BuglyApp.java" target-dir="src/com/ihealthlabs/plugins" />
-    <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
-      <application android:name="com.ihealthlabs.plugins.Bugly">
-        <meta-data android:name="BUGLY_APPID" android:value="$BUGLY_APPID" />
-        <meta-data android:name="BUGLY_ENABLE_DEBUG" android:value="$BUGLY_ENABLE_DEBUG" />
-      </application>
-    </edit-config>
     <config-file target="AndroidManifest.xml" parent="/manifest">
       <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
       <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
@@ -34,6 +30,5 @@
       <meta-data android:name="BUGLY_APPID" android:value="$BUGLY_APPID" />
       <meta-data android:name="BUGLY_ENABLE_DEBUG" android:value="$BUGLY_ENABLE_DEBUG" />
     </config-file>
-
   </platform>
 </plugin>
