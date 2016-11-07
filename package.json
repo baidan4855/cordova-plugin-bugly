@@ -1,0 +1,21 @@
+{
+  "name": "cordova-plugin-bugly",
+  "version": "1.0.1",
+  "cordova": {
+    "id": "cordova-plugin-bugly",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "description": "Cordova Crash Reporter",
+  "repository": "https://github.com/baidan4855/cordova-plugin-bugly.git",
+  "issue": "https://github.com/baidan4855/cordova-plugin-bugly/issues",
+  "keywords": [
+    "cordova",
+    "cordova-android",
+    "bugly"
+  ],
+  "author": "jackjiang",
+  "license": "MIT"
+}

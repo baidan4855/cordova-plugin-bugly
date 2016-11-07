@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    id="cordova-plugin-bugly"
+    version="1.0.0">
+  <name>bugly</name>
+  <description>Cordova Crash Reporter</description>
+  <license>Apache 2.0</license>
+  <keywords>cordova, crash reporter, bugly</keywords>
+  <repo>https://github.com/baidan4855/cordova-plugin-bugly.git</repo>
+  <issue>https://github.com/baidan4855/cordova-plugin-bugly/issues</issue>
+
+  <preference name="BUGLY_APPID" />
+  <preference name="BUGLY_ENABLE_DEBUG" default="false" />
+
+  <!-- android -->
+  <platform name="android">
+    <lib-file src="src/android/libs/bugly_crash_release.jar" />
+    <source-file src="src/android/BuglyApp.java" target-dir="src/com/ihealthlabs/plugins" />
+    <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
+      <application android:name="com.ihealthlabs.plugins.Bugly">
+        <meta-data android:name="BUGLY_APPID" android:value="$BUGLY_APPID" />
+        <meta-data android:name="BUGLY_ENABLE_DEBUG" android:value="$BUGLY_ENABLE_DEBUG" />
+      </application>
+    </edit-config>
+    <config-file target="AndroidManifest.xml" parent="/manifest">
+      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+      <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+      <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+      <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+      <uses-permission android:name="android.permission.READ_LOGS"></uses-permission>
+    </config-file>
+    <config-file target="AndroidManifest.xml" parent="/manifest/application">
+      <meta-data android:name="BUGLY_APPID" android:value="$BUGLY_APPID" />
+      <meta-data android:name="BUGLY_ENABLE_DEBUG" android:value="$BUGLY_ENABLE_DEBUG" />
+    </config-file>
+
+  </platform>
+</plugin>
