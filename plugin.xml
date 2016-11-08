@@ -31,4 +31,13 @@
       <meta-data android:name="BUGLY_ENABLE_DEBUG" android:value="$BUGLY_ENABLE_DEBUG" />
     </config-file>
   </platform>
+
+  <!-- ios -->
+  <platform name="ios">
+    <framework src="SystemConfiguration.framework" />
+    <framework src="Security.framework" />
+    <framework src="libz.tbd" />
+    <framework src="libc++.tbd" />
+    <framework src="src/ios/libs/Bugly.framework" custom="true" />
+  </platform>
 </plugin>
