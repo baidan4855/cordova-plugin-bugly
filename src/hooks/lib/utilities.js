@@ -64,8 +64,10 @@ module.exports = {
         var pluginId = this.getPluginId();
         var appIdKeys = {android: "BUGLY_APPID_ANDROID", ios: "BUGLY_APPID_IOS"};
         var id = platformConfig.installed_plugins[pluginId][appIdKeys[platform]];
+        var debug = platformConfig.installed_plugins[pluginId].BUGLY_ENABLE_DEBUG;
         var config = {
-            id: id
+            id: id,
+            debug: debug
         }
         return config;
     },
