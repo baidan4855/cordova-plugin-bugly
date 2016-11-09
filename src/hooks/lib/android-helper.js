@@ -8,7 +8,7 @@ module.exports = {
     var manifest = utilities.readManifest();
     manifest = manifest.replace(/(<application[^>]*?) android:name="[^\"]+?"/m,'$1');
     manifest = manifest.replace('<application','<application android:name="com.ihealthlabs.plugins.BuglyApp"');
-    utilities.writeBuildGradle(manifest);
+    utilities.writeManifest(manifest);
   },
   removeAppName: function() {
     var manifest = utilities.readManifest();

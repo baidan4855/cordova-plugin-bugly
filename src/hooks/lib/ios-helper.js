@@ -14,13 +14,13 @@ module.exports = {
     addBuglyStart: function(context) {
       var appDelegate = utilities.readAppDelegate(context);
       appDelegate = appDelegate.replace('@implementation AppDelegate','#import <Bugly/Bugly.h>\n@implementation AppDelegate');
-      appDelegate = appDelegate.replace('self.viewController','[Bugly startWithAppId:@"'+ utilities.getPluginConfig('ios').id +'"];\n    self.viewController');
+      appDelegate = appDelegate.replace('self.viewController','[Bugly startWithAppId:nil];\n    self.viewController');
       utilities.writeAppDelegate(context, appDelegate);
     },
     removeBuglyStart: function(context) {
       var appDelegate = utilities.readAppDelegate(context);
       appDelegate = appDelegate.replace(/\#import <Bugly\/Bugly\.h>\s/m, '');
-      appDelegate = appDelegate.replace(/\[Bugly startWithAppId:@[^\]]+];\s+/, '');
+      appDelegate = appDelegate.replace(/\[Bugly startWithAppId:nil];\s+/, '');
       utilities.writeAppDelegate(context, appDelegate);
     }
 

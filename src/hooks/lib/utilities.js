@@ -60,17 +60,12 @@ module.exports = {
      */
     getPluginConfig: function(platform) {
         var platformConfigPath = path.join("platforms", platform, platform + ".json");
-
         var platformConfig = require(process.cwd() + "/" + platformConfigPath);
-
         var pluginId = this.getPluginId();
-
-        var id = platformConfig.installed_plugins[pluginId].BUGLY_APPID;
-        var enableDebug = platformConfig.installed_plugins[pluginId].BUGLY_ENABLE_DEBUG;
-
+        var appIdKeys = {android: "BUGLY_APPID_ANDROID", ios: "BUGLY_APPID_IOS"};
+        var id = platformConfig.installed_plugins[pluginId][appIdKeys[platform]];
         var config = {
-            id: id,
-            enableDebug: enableDebug
+            id: id
         }
         return config;
     },
@@ -79,7 +74,7 @@ module.exports = {
         return fs.readFileSync(getManifestPath(), "utf-8");
     },
 
-    writeManifest: function(buildGradle) {
-        fs.writeFileSync(getManifestPath(), buildGradle);
+    writeManifest: function(manifest) {
+        fs.writeFileSync(getManifestPath(), manifest);
     }
 };

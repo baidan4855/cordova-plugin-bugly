@@ -10,8 +10,8 @@
   <repo>https://github.com/baidan4855/cordova-plugin-bugly.git</repo>
   <issue>https://github.com/baidan4855/cordova-plugin-bugly/issues</issue>
 
-  <preference name="BUGLY_APPID" />
-  <preference name="BUGLY_ENABLE_DEBUG" default="false" />
+  <preference name="BUGLY_APPID_ANDROID" />
+  <preference name="BUGLY_APPID_IOS" />
 
   <hook type="after_plugin_install" src="src/hooks/after_plugin_install.js" />
   <hook type="before_plugin_uninstall" src="src/hooks/before_plugin_uninstall.js" />
@@ -27,8 +27,7 @@
       <uses-permission android:name="android.permission.READ_LOGS"></uses-permission>
     </config-file>
     <config-file target="AndroidManifest.xml" parent="/manifest/application">
-      <meta-data android:name="BUGLY_APPID" android:value="$BUGLY_APPID" />
-      <meta-data android:name="BUGLY_ENABLE_DEBUG" android:value="$BUGLY_ENABLE_DEBUG" />
+      <meta-data android:name="BUGLY_APPID" android:value="$BUGLY_APPID_ANDROID" />
     </config-file>
   </platform>
 
@@ -39,5 +38,10 @@
     <framework src="libz.tbd" />
     <framework src="libc++.tbd" />
     <framework src="src/ios/libs/Bugly.framework" custom="true" />
+
+    <config-file target="*-Info.plist" parent="BuglyAppIDString">
+        <string>$BUGLY_APPID_IOS</string>
+    </config-file>
   </platform>
+
 </plugin>
