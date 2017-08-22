@@ -35,12 +35,14 @@
         android:configChanges="keyboardHidden|orientation|screenSize|locale"
         android:theme="@android:style/Theme.Translucent" />
         <provider
+          xmlns:tools="http://schemas.android.com/tools"
           android:name=".utils.BuglyFileProvider"
           android:authorities="${applicationId}.fileProvider"
           android:exported="false"
           android:grantUriPermissions="true"
           tools:replace="name,authorities,exported,grantUriPermissions">
           <meta-data
+            xmlns:tools="http://schemas.android.com/tools"
             android:name="android.support.FILE_PROVIDER_PATHS"
             android:resource="@xml/buyly"
             tools:replace="name,resource"/>
