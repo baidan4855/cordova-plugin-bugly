@@ -45,7 +45,7 @@
           <meta-data
             xmlns:tools="http://schemas.android.com/tools"
             android:name="android.support.FILE_PROVIDER_PATHS"
-            android:resource="@xml/buyly"
+            android:resource="@xml/bugly"
             tools:replace="name,resource"/>
         </provider>
       <meta-data android:name="BUGLY_APPID" android:value="$BUGLY_APPID_ANDROID" />
