@@ -18,7 +18,7 @@
   <hook type="before_plugin_uninstall" src="src/hooks/before_plugin_uninstall.js" />
   <!-- android -->
   <platform name="android">
-    <lib-file src="src/android/libs/bugly_crash_release.jar" />
+    <lib-file src="src/android/libs/bugly_crashreport_upgrade-1.3.1.aar" />
     <source-file src="src/android/BuglyApp.java" target-dir="src/com/ihealthlabs/plugins" />
     <config-file target="AndroidManifest.xml" parent="/manifest">
       <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
