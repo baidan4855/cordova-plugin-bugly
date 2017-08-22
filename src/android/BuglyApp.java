@@ -23,7 +23,7 @@ public class BuglyApp extends Application {
         Bundle bundle = applicationInfo.metaData;
         String buglyAppId = bundle.getString("BUGLY_APPID");
         Boolean bugylyDebug = bundle.getBoolean("BUGLY_ENABLE_DEBUG");
-        Bugly.init(getApplicationContext(), buglyAppId, );
+        Bugly.init(getApplicationContext(), buglyAppId, bugylyDebug);
     } catch (PackageManager.NameNotFoundException e) {
         Log.e("bugly", "Failed to load meta-data, NameNotFound: " + e.getMessage());
     }
