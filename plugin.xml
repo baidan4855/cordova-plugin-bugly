@@ -21,6 +21,7 @@
     <lib-file src="src/android/libs/bugly_crashreport_upgrade-1.3.1.aar" />
     <framework src="src/android/rules.gradle" custom="true" type="gradleReference" />
     <source-file src="src/android/BuglyApp.java" target-dir="src/com/ihealthlabs/plugins" />
+    <source-file src="src/android/BuglyFileProvider.java" target-dir="src/com/ihealthlabs/plugins" />
     <source-file src="src/android/xml/bugly.xml" target-dir="res/xml" />
     <config-file target="AndroidManifest.xml" parent="/*">
       <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
@@ -37,7 +38,7 @@
         android:theme="@android:style/Theme.Translucent" />
         <provider
           xmlns:tools="http://schemas.android.com/tools"
-          android:name=".utils.BuglyFileProvider"
+          android:name="com.ihealthlabs.plugins.BuglyFileProvider"
           android:authorities="${applicationId}.fileProvider"
           android:exported="false"
           android:grantUriPermissions="true"
