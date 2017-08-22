@@ -29,7 +29,7 @@
       <uses-permission android:name="android.permission.READ_LOGS"></uses-permission>
       <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     </config-file>
-    <config-file target="AndroidManifest.xml" parent="/application">
+    <config-file target="AndroidManifest.xml" parent="/manifest/application">
       <activity
         android:name="com.tencent.bugly.beta.ui.BetaActivity"
         android:configChanges="keyboardHidden|orientation|screenSize|locale"
