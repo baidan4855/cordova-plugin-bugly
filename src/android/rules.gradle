@@ -1,0 +1,12 @@
+// Allow plugins to declare Maven dependencies via build-extras.gradle.
+repositories {
+  mavenCentral()
+  flatDir {
+    dirs 'libs'
+  }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile(name: 'bugly_crashreport_upgrade-1.2.0', ext: 'aar')
+}
