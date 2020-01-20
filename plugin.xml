@@ -7,21 +7,35 @@
   <description>Cordova Crash Reporter</description>
   <license>Apache 2.0</license>
   <keywords>cordova, crash reporter, bugly</keywords>
-  <repo>https://github.com/baidan4855/cordova-plugin-bugly.git</repo>
-  <issue>https://github.com/baidan4855/cordova-plugin-bugly/issues</issue>
+  <repo>https://github.com/songlipeng2003/cordova-plugin-bugly.git</repo>
+  <issue>https://github.com/songlipeng2003/cordova-plugin-bugly/issues</issue>
+  
+  <!-- Required gradle functionality support -->
+  <engine name="cordova-android" version=">=4.1.0" />
+  <!-- Cordova 6.4.0 and iOS 4.3.0 are required for Cocoapods support -->
+  <engine name="cordova" version=">=6.4.0" />
+  <engine name="cordova-ios" version=">=4.3.0" />
+
+  <hook type="after_plugin_install" src="src/hooks/after_plugin_install.js" />
+  <hook type="before_plugin_uninstall" src="src/hooks/before_plugin_uninstall.js" />
 
   <preference name="BUGLY_APPID_ANDROID" />
   <preference name="BUGLY_APPID_IOS" />
   <preference name="BUGLY_ENABLE_DEBUG" />
-
-  <hook type="after_plugin_install" src="src/hooks/after_plugin_install.js" />
-  <hook type="before_plugin_uninstall" src="src/hooks/before_plugin_uninstall.js" />
   <!-- android -->
   <platform name="android">
-    <lib-file src="src/android/libs/bugly_crashreport_upgrade-1.3.1.aar" />
-    <framework src="src/android/rules.gradle" custom="true" type="gradleReference" />
-    <source-file src="src/android/BuglyApp.java" target-dir="src/com/ihealthlabs/plugins" />
+    <framework src="com.tencent.bugly:crashreport_upgrade:1.4.2" />
+    <framework src="com.tencent.bugly:nativecrashreport:3.1.0" />
+    <source-file src="src/android/BuglyPlugin.java" target-dir="src/com/ihealthlabs/plugins" />
     <source-file src="src/android/BuglyFileProvider.java" target-dir="src/com/ihealthlabs/plugins" />
+  
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="BuglyPlugin">
+        <param name="onload" value="true" />
+        <param name="android-package"
+                value="com.ihealthlabs.plugins.BuglyPlugin"/>
+      </feature>
+    </config-file>
     <source-file src="src/android/xml/bugly.xml" target-dir="res/xml" />
     <config-file target="AndroidManifest.xml" parent="/*">
       <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
@@ -30,6 +44,7 @@
       <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
       <uses-permission android:name="android.permission.READ_LOGS"></uses-permission>
       <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+      <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     </config-file>
     <config-file target="AndroidManifest.xml" parent="/manifest/application">
       <activity
