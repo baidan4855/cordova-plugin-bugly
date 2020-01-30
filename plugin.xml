@@ -23,10 +23,13 @@
   <preference name="BUGLY_APPID_ANDROID" />
   <preference name="BUGLY_APPID_IOS" />
   <preference name="BUGLY_ENABLE_DEBUG" />
+  
   <!-- android -->
   <platform name="android">
     <framework src="com.tencent.bugly:crashreport_upgrade:1.4.2" />
     <framework src="com.tencent.bugly:nativecrashreport:3.1.0" />
+    <framework src="androidx.legacy:legacy-support-v4:1.0.0" />
+    
     <source-file src="src/android/BuglyPlugin.java" target-dir="src/com/ihealthlabs/plugins" />
     <source-file src="src/android/BuglyFileProvider.java" target-dir="src/com/ihealthlabs/plugins" />
   
